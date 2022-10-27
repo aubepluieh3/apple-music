@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import HomePlaylist from "../components/HomePlaylist";
 import Main from "../Main";
 
 const Body = styled.div`
@@ -16,7 +17,9 @@ const Box = styled.div`
 function Home() {
   return (
     <Body>
-      <Box></Box>
+      <Box>
+        <HomePlaylist />
+      </Box>
       <Main />
     </Body>
   );
