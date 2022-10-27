@@ -16,7 +16,7 @@ import React from "react";
 const Box = styled.div`
   background: white;
   border-radius: 30px;
-  width: 360px;
+  width: 30%;
   height: 600px;
   margin: 50px 0px;
 `;
