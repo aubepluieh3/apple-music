@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import MusicDetail from "../MusicDetail";
 import album from "../img/strawberry moon.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
@@ -8,6 +9,7 @@ import {
   faPlay,
   faForward,
   faShuffle,
+  faStop,
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
@@ -51,6 +53,23 @@ const Text = styled.div`
     color: grey;
   }
 `;
+
+const MusicBar = styled.div`
+  display: flex;
+  justify-content: center;
+  input {
+    width: 205px;
+    accent-color: black;
+  }
+`;
+
+const Time = styled.div`
+  display: flex;
+  justify-content: space-around;
+  font-size: 11px;
+  color: lightgray;
+  margin-top: 10px;
+`;
 const PlayBar = styled.div`
   display: flex;
   margin: 60px 0px;
@@ -71,7 +90,30 @@ const PlayBox = styled.div`
   box-shadow: rgb(93 88 92 / 65%) 0px 7px 29px 0px;
 `;
 
-function PlayScreen() {
+function PlayScreen({ audio }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState("0:00");
+  const [duration, setDuration] = useState("0:00");
+  const [timeRange, settimeRange] = useState(0);
+
+  const onPlayButtonClick = () => {
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      audio.play();
+      setIsPlaying(true);
+    }
+  };
+
+  useEffect(() => {
+    audio.addEventListener("timeupdate", () => {
+      setDuration(audio.duration);
+      setCurrentTime(audio.currentTime);
+      settimeRange((audio.currentTime / audio.duration) * 1000);
+    });
+  }, [audio]);
+
   return (
     <Box>
       <MusicImg>
@@ -81,12 +123,29 @@ function PlayScreen() {
         <span>Strawberry Moon</span>
         <span>IU</span>
       </Text>
-
+      <MusicBar>
+        <input
+          type="range"
+          id="bar"
+          name="bar"
+          min="0"
+          max="205"
+          value={timeRange}
+        />
+      </MusicBar>
+      <Time>
+        <span>{currentTime}</span>
+        <span>{duration}</span>
+      </Time>
       <PlayBar>
         <FontAwesomeIcon icon={faRepeat} />
         <FontAwesomeIcon icon={faBackward} />
-        <PlayBox>
-          <FontAwesomeIcon icon={faPlay} />
+        <PlayBox onClick={onPlayButtonClick}>
+          {isPlaying ? (
+            <FontAwesomeIcon icon={faPlay} />
+          ) : (
+            <FontAwesomeIcon icon={faStop} />
+          )}
         </PlayBox>
         <FontAwesomeIcon icon={faForward} />
         <FontAwesomeIcon icon={faShuffle} />
