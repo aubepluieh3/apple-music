@@ -13,16 +13,6 @@ const Logo = styled(motion.svg)`
   height: 25px;
 `;
 
-const logoVariants = {
-  normal: {},
-  active: {
-    fillOpacity: [0, 1, 0],
-    transition: {
-      repeat: Infinity,
-    },
-  },
-};
-
 const Items = styled.ul`
   display: flex;
   align-items: center;
@@ -30,27 +20,26 @@ const Items = styled.ul`
 
 const Item = styled.li`
   margin-right: 20px;
-  color: black;
+
   transition: color 0.3s ease-in-out;
   position: relative;
-  display: flex;
   justify-content: center;
-  flex-direction: column;
-  &:hover {
-    color: pink;
+  a {
+    text-decoration: none;
+    color: black;
   }
 `;
 
 const Circle = styled(motion.span)`
   position: absolute;
-  width: 5px;
-  height: 5px;
+
+  height: 8px;
   border-radius: 5px;
   bottom: -5px;
   left: 0;
   right: 0;
   margin: 0 auto;
-  background-color: ${(props) => props.theme.red};
+  background-color: pink;
 `;
 
 function Header() {
@@ -60,7 +49,14 @@ function Header() {
   return (
     <>
       <HeaderBox>
-        <Logo variants={logoVariants} whileHover="active" initial="normal">
+        <Logo
+          whileHover={{ scale: 1.8, rotate: 90 }}
+          whileTap={{
+            scale: 1.3,
+            rotate: -90,
+            borderRadius: "100%",
+          }}
+        >
           <FontAwesomeIcon icon={faAppleWhole} />{" "}
         </Logo>
         <Items>
