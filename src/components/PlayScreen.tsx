@@ -1,4 +1,5 @@
 import { useState } from "react";
+import album from "../img/strawberry moon.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import {
@@ -10,9 +11,25 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
+const Box = styled.div`
+  background: white;
+  border-radius: 30px;
+  width: 360px;
+  height: 600px;
+  margin: 50px 0px;
+`;
+
 const MusicImg = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const AlbumImg = styled.img`
+  width: 200px;
+  height: 200px;
+  border-radius: 10%;
+  margin: 30px 0px;
+  box-shadow: rgb(194 150 183) 0px 7px 29px 0px;
 `;
 
 const Text = styled.div`
@@ -47,6 +64,7 @@ const PlayBox = styled.div`
   height: 50px;
   border-radius: 50%;
   background-color: black;
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,9 +73,9 @@ const PlayBox = styled.div`
 
 function PlayScreen() {
   return (
-    <div className="second box">
+    <Box>
       <MusicImg>
-        <img src="img/strawberry moon.jpg" />
+        <AlbumImg src={album} />
       </MusicImg>
       <Text>
         <span>Strawberry Moon</span>
@@ -73,7 +91,7 @@ function PlayScreen() {
         <FontAwesomeIcon icon={faForward} />
         <FontAwesomeIcon icon={faShuffle} />
       </PlayBar>
-    </div>
+    </Box>
   );
 }
 export default PlayScreen;

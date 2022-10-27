@@ -3,12 +3,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Main from "./Main";
 
 function App() {
-  const client = new QueryClient();
-  return (
-    <QueryClientProvider client={client}>
-      <Main />
-    </QueryClientProvider>
-  );
+  return <Main />;
 }
 
 export default App;

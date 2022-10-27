@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { QueryClient, QueryClientProvider } from "react-query";
 import { createGlobalStyle } from "styled-components";
 
 import App from "./App";
@@ -58,21 +57,18 @@ table {
 }
 body {
   font-weight: 300;
-  font-family: 'Source Sans Pro', sans-serif;
- 
+  font-family: "Nunito", sans-serif;
   line-height: 1.2;
   background-color: whitesmoke;
   overflow-x:hidden
 }
 
 `;
-const client = new QueryClient();
+
 ReactDOM.render(
   <React.StrictMode>
-    <QueryClientProvider client={client}>
-      <GlobalStyle />
-      <App />
-    </QueryClientProvider>
+    <GlobalStyle />
+    <App />
   </React.StrictMode>,
   document.getElementById("root")
 );
