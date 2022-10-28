@@ -3,6 +3,8 @@ import MusicDetail from "../MusicDetail";
 import album from "../img/strawberry moon.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
 import {
   faRepeat,
   faBackward,
@@ -21,7 +23,7 @@ const Box = styled.div`
   margin: 50px 0px;
 `;
 
-const MusicImg = styled.div`
+const MusicImg = styled(motion.div)`
   display: flex;
   justify-content: center;
 `;
@@ -116,7 +118,10 @@ function PlayScreen({ audio }) {
 
   return (
     <Box>
-      <MusicImg>
+      <MusicImg
+        whileHover={{ scale: [null, 1.2, 1.1] }}
+        transition={{ duration: 0.3 }}
+      >
         <AlbumImg src={album} />
       </MusicImg>
       <Text>
@@ -142,9 +147,13 @@ function PlayScreen({ audio }) {
         <FontAwesomeIcon icon={faBackward} />
         <PlayBox onClick={onPlayButtonClick}>
           {isPlaying ? (
-            <FontAwesomeIcon icon={faPlay} />
+            <>
+              <FontAwesomeIcon icon={faPlay} />
+            </>
           ) : (
-            <FontAwesomeIcon icon={faStop} />
+            <>
+              <FontAwesomeIcon icon={faStop} />
+            </>
           )}
         </PlayBox>
         <FontAwesomeIcon icon={faForward} />
