@@ -104,6 +104,22 @@ const Title = styled(motion.span)`
   font-weight: 700;
 `;
 
+const Content = styled(motion.div)`
+  width: 600px;
+  height: 320px;
+  margin: 25px 0px;
+  font-size: 12px;
+  div:first-child {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin: 10px 15px;
+  }
+  div:last-child {
+    margin: 10px 15px;
+  }
+`;
+
 function HomePlaylist() {
   const ref = useRef(null);
   const { scrollXProgress } = useScroll({ container: ref });
@@ -137,10 +153,16 @@ function HomePlaylist() {
               animate="visible"
               exit="exit"
             >
-              <BoxTwo
-                layoutId={id}
-                style={{ width: 600, height: 320 }}
-              ></BoxTwo>
+              <BoxTwo layoutId={id} style={{ width: 600, height: 320 }}>
+                {items
+                  .filter((item) => item.id === id)
+                  .map((item) => (
+                    <Content>
+                      <div>{item.title}</div>
+                      <div>{item.content}</div>
+                    </Content>
+                  ))}
+              </BoxTwo>
             </Overlay>
           )}
         </AnimatePresence>
