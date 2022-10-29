@@ -8,7 +8,7 @@ import kpop from "../img/kpop.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useRef, useState } from "react";
-import { items } from "../HomeData";
+import { items } from "../Data";
 
 const Box = styled.div`
   display: flex;

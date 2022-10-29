@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
-import { items } from "../data";
+import { items } from "../Foru";
 import { useState } from "react";
 
 const Box = styled.div`
@@ -42,18 +42,28 @@ const BoxTwo = styled(motion.div)`
   border-radius: 40px;
   height: 200px;
   box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 40px;
+  }
 `;
 
-const BoxAnimation = styled(motion.div)`
-  background-color: rgba(255, 255, 255, 1);
-  border-radius: 40px;
-  width: 200px;
-  height: 200px;
-  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1), 0 10px 20px rgba(0, 0, 0, 0.06);
+const Content = styled(motion.div)`
+  width: 600px;
+  height: 320px;
+  margin: 25px 0px;
+  font-size: 12px;
+  > div:first-child {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    margin: 10px 15px;
+  }
 `;
 const Overlay = styled(motion.div)`
   width: 60%;
-
   position: absolute;
   display: flex;
   justify-content: center;
@@ -65,12 +75,66 @@ const overlay = {
   visible: { backgroundColor: "rgba(0,0,0,0)" },
   exit: { backgroundColor: "rgba(0, 0, 0, 0)" },
 };
-const Title = styled(motion.span)``;
-const Detail = styled(motion.span)``;
-const Btn = styled(motion.button)``;
+const Title = styled(motion.span)`
+  position: relative;
+  top: -40px;
+  left: 30px;
+  color: white;
+  font-weight: 700;
+`;
+
+const AlbumDetail = styled.div`
+  display: flex;
+  img {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 200px;
+    height: 200px;
+    position: absolute;
+  }
+`;
+const AlbumTrack = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 180px;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  margin-left: 80px;
+  margin-top: 15px;
+`;
+
+const Track = styled.div`
+  width: 300px;
+  padding: 10px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-weight: 700;
+  border-radius: 10px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+`;
+const Album = styled.div`
+  position: relative;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  font-size: 35px;
+  font-weight: 700;
+  left: 20px;
+  top: 100px;
+  span {
+    margin-left: 7px;
+  }
+`;
+
+const Interview = styled.div`
+  margin: 10px 15px;
+`;
 
 function ForUPage() {
   const [id, setId] = useState<null | string>(null);
+
   return (
     <Box>
       <Header>
@@ -85,13 +149,13 @@ function ForUPage() {
               key={item.id}
               onClick={() => setId(item.id)}
             >
+              <img src={`img/${item.id}.jpg`} />
               <Title>{item.title}</Title>
-              <Detail>{item.category}</Detail>
             </BoxTwo>
           ))}
         </Grid>
         <AnimatePresence>
-          {id ? (
+          {id && (
             <Overlay
               variants={overlay}
               onClick={() => setId(null)}
@@ -99,15 +163,35 @@ function ForUPage() {
               animate="visible"
               exit="exit"
             >
-              {items.map((item) => (
-                <BoxAnimation layoutId={id}>
-                  <Btn onClick={() => setId(null)} />
-                  <Title>{item.title}</Title>
-                  <Detail>{item.category}</Detail>
-                </BoxAnimation>
-              ))}
+              <BoxTwo layoutId={id} style={{ width: 600, height: 320 }}>
+                {items
+                  .filter((item) => item.id === id)
+                  .map((item) => (
+                    <Content>
+                      <div>{item.title}</div>
+                      {item.album ? (
+                        <AlbumDetail>
+                          <div>
+                            <img src={`img/${item.id}.jpg`} />
+                          </div>
+                          <Album>
+                            <span>{item.album}</span>
+                            <span>{item.artist}</span>
+                          </Album>
+                          <AlbumTrack>
+                            {item.tracks.map((track) => (
+                              <Track>{track}</Track>
+                            ))}
+                          </AlbumTrack>
+                        </AlbumDetail>
+                      ) : (
+                        <Interview>{item.content}</Interview>
+                      )}
+                    </Content>
+                  ))}
+              </BoxTwo>
             </Overlay>
-          ) : null}
+          )}
         </AnimatePresence>
       </Wrapper>
     </Box>
