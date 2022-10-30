@@ -10,7 +10,9 @@ import {
   faForward,
   faShuffle,
   faStop,
+  faListUl,
 } from "@fortawesome/free-solid-svg-icons";
+import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import React from "react";
 
 const Box = styled.div`
@@ -24,6 +26,7 @@ const Box = styled.div`
 const MusicImg = styled(motion.div)`
   display: flex;
   justify-content: center;
+  margin-top: 30px;
 `;
 
 const AlbumImg = styled.img`
@@ -75,7 +78,7 @@ const PlayBar = styled.div`
   margin: 60px 0px;
   justify-content: space-between;
   align-items: center;
-  margin: 60px 40px;
+  margin: 30px 40px;
 `;
 
 const PlayBox = styled.div`
@@ -90,6 +93,11 @@ const PlayBox = styled.div`
   box-shadow: rgb(93 88 92 / 65%) 0px 7px 29px 0px;
 `;
 
+const Another = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 40px;
+`;
 function PlayScreen({ audio }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState("0:00");
@@ -157,6 +165,10 @@ function PlayScreen({ audio }) {
         <FontAwesomeIcon icon={faForward} />
         <FontAwesomeIcon icon={faShuffle} />
       </PlayBar>
+      <Another>
+        <FontAwesomeIcon icon={faMessage} />
+        <FontAwesomeIcon icon={faListUl} />
+      </Another>
     </Box>
   );
 }
