@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import MusicDetail from "../MusicDetail";
-import album from "../img/strawberry moon.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -122,7 +120,7 @@ function PlayScreen({ audio }) {
         whileHover={{ scale: [null, 1.2, 1.1] }}
         transition={{ duration: 0.3 }}
       >
-        <AlbumImg src={album} />
+        <AlbumImg src="img/strawberry moon.jpg" />
       </MusicImg>
       <Text>
         <span>Strawberry Moon</span>
