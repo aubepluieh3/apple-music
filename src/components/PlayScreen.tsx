@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -98,29 +98,63 @@ const Another = styled.div`
   justify-content: space-between;
   margin: 30px 40px;
 `;
-function PlayScreen({ audio }) {
+const Btn = styled.button`
+  background: none;
+
+  border: none;
+`;
+
+function PlayScreen({ tracks }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState("0:00");
   const [duration, setDuration] = useState("0:00");
   const [timeRange, settimeRange] = useState(0);
+  const [trackIndex, setTrackIndex] = useState(0);
+  const [trackProgress, setTrackProgress] = useState(0);
+
+  const { title, artist, id, music, lyrics, img } = tracks[trackIndex];
+
+  // Refs
+  const audioRef = useRef(new Audio(music));
+  const intervalRef = useRef();
+  const isReady = useRef(false);
 
   const onPlayButtonClick = () => {
     if (isPlaying) {
-      audio.pause();
+      audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audio.play();
+      audioRef.current.play();
       setIsPlaying(true);
     }
   };
 
+  const toPrevTrack = () => {
+    if (trackIndex - 1 < 0) {
+      setTrackIndex(tracks.length - 1);
+    } else {
+      setTrackIndex(trackIndex - 1);
+    }
+  };
+
+  const toNextTrack = () => {
+    if (trackIndex < tracks.length - 1) {
+      setTrackIndex(trackIndex + 1);
+    } else {
+      setTrackIndex(0);
+    }
+  };
+
+  
   useEffect(() => {
-    audio.addEventListener("timeupdate", () => {
-      setDuration(audio.duration);
-      setCurrentTime(audio.currentTime);
-      settimeRange((audio.currentTime / audio.duration) * 1000);
+    audioRef.current.addEventListener("timeupdate", () => {
+      setDuration(audioRef.current.duration);
+      setCurrentTime(audioRef.current.currentTime);
+      settimeRange(
+        (audioRef.current.currentTime / audioRef.current.duration) * 1000
+      );
     });
-  }, [audio]);
+  }, [audioRef.current]);
 
   return (
     <Box>
@@ -128,11 +162,11 @@ function PlayScreen({ audio }) {
         whileHover={{ scale: [null, 1.2, 1.1] }}
         transition={{ duration: 0.3 }}
       >
-        <AlbumImg src="img/strawberry moon.jpg" />
+        <AlbumImg src={img} />
       </MusicImg>
       <Text>
-        <span>Strawberry Moon</span>
-        <span>IU</span>
+        <span>{title}</span>
+        <span>{artist}</span>
       </Text>
       <MusicBar>
         <input
@@ -150,20 +184,26 @@ function PlayScreen({ audio }) {
       </Time>
       <PlayBar>
         <FontAwesomeIcon icon={faRepeat} />
-        <FontAwesomeIcon icon={faBackward} />
+        <Btn onClick={toPrevTrack}>
+          <FontAwesomeIcon icon={faBackward} />
+        </Btn>
         <PlayBox onClick={onPlayButtonClick}>
           {isPlaying ? (
             <>
-              <FontAwesomeIcon icon={faPlay} />
+              <FontAwesomeIcon icon={faStop} />
             </>
           ) : (
             <>
-              <FontAwesomeIcon icon={faStop} />
+              <FontAwesomeIcon icon={faPlay} />
             </>
           )}
         </PlayBox>
-        <FontAwesomeIcon icon={faForward} />
-        <FontAwesomeIcon icon={faShuffle} />
+        <Btn onClick={toNextTrack}>
+          <FontAwesomeIcon icon={faForward} />
+        </Btn>
+        <Btn>
+          <FontAwesomeIcon icon={faShuffle} />
+        </Btn>
       </PlayBar>
       <Another>
         <FontAwesomeIcon icon={faMessage} />
