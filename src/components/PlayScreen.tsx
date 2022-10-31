@@ -235,6 +235,11 @@ function PlayScreen({ tracks }) {
     };
   }, []);
 
+  //shuffle
+  const onShuffle = () => {
+    setTrackIndex(Math.floor(Math.random() * tracks.length));
+  };
+
   return (
     <Box>
       <MusicImg
@@ -284,7 +289,7 @@ function PlayScreen({ tracks }) {
         <Btn onClick={toNextTrack}>
           <FontAwesomeIcon icon={faForward} />
         </Btn>
-        <Btn>
+        <Btn onClick={onShuffle}>
           <FontAwesomeIcon icon={faShuffle} />
         </Btn>
       </PlayBar>
