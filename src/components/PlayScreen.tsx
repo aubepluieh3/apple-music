@@ -11,6 +11,9 @@ import {
   faShuffle,
   faStop,
   faListUl,
+  faVolumeOff,
+  faVolumeHigh,
+  faVolumeXmark
 } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import React from "react";
@@ -67,6 +70,17 @@ const MusicBar = styled.div`
   }
 `;
 
+const SoundBar = styled.div`
+  display: flex;
+  justify-content: center;
+  input {
+    accent-color: black;
+  }
+  svg {
+    margin: 0px 5px;
+  }
+`;
+
 const Time = styled.div`
   display: flex;
   justify-content: space-around;
@@ -79,7 +93,7 @@ const PlayBar = styled.div`
   margin: 60px 0px;
   justify-content: space-between;
   align-items: center;
-  margin: 30px 40px;
+  margin: 15px 40px;
 `;
 
 const PlayBox = styled.div`
@@ -240,6 +254,11 @@ function PlayScreen({ tracks }) {
     setTrackIndex(Math.floor(Math.random() * tracks.length));
   };
 
+  //volume
+  const onVolumeChange = (value: string) => {
+    audioRef.current.volume = parseInt(value) / 100;
+  };
+
   return (
     <Box>
       <MusicImg
@@ -293,6 +312,21 @@ function PlayScreen({ tracks }) {
           <FontAwesomeIcon icon={faShuffle} />
         </Btn>
       </PlayBar>
+      <SoundBar>
+        <FontAwesomeIcon icon={faVolumeOff} />
+        <input
+          type="range"
+          id="bar"
+          name="bar"
+          step="10"
+          min="0"
+          max="100"
+          onChange={(e) => {
+            onVolumeChange(e.target.value);
+          }}
+        />
+        <FontAwesomeIcon icon={faVolumeHigh} />
+      </SoundBar>
       <Another>
         <Btn>
           <FontAwesomeIcon icon={faMessage} />
