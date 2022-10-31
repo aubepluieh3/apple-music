@@ -14,6 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import React from "react";
+import { onCalcMusicTime } from "./CalTime";
 
 const Box = styled.div`
   background: white;
@@ -108,8 +109,9 @@ function PlayScreen({ tracks }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState("0:00");
   const [duration, setDuration] = useState("0:00");
-  const [timeRange, settimeRange] = useState(0);
+  const [timeRange, setTimeRange] = useState(0);
   const [trackIndex, setTrackIndex] = useState(0);
+  const [barLength, setBarLength] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
 
   const { title, artist, id, music, lyrics, img } = tracks[trackIndex];
@@ -119,6 +121,7 @@ function PlayScreen({ tracks }) {
   const intervalRef = useRef();
   const isReady = useRef(false);
 
+  //재생 버튼
   const onPlayButtonClick = () => {
     if (isPlaying) {
       audioRef.current.pause();
@@ -129,6 +132,7 @@ function PlayScreen({ tracks }) {
     }
   };
 
+  //이전
   const toPrevTrack = () => {
     if (trackIndex - 1 < 0) {
       setTrackIndex(tracks.length - 1);
@@ -137,6 +141,7 @@ function PlayScreen({ tracks }) {
     }
   };
 
+  //다음
   const toNextTrack = () => {
     if (trackIndex < tracks.length - 1) {
       setTrackIndex(trackIndex + 1);
@@ -145,16 +150,90 @@ function PlayScreen({ tracks }) {
     }
   };
 
-  
+  //막대 길이
+  useEffect(() => {
+    setBarLength(Math.floor(audioRef.current.duration));
+  }, [[audioRef.current]]);
+
+  const startTimer = () => {
+    // Clear
+    clearInterval(intervalRef.current);
+    intervalRef.current = setInterval(() => {
+      if (audioRef.current.ended) {
+        toNextTrack();
+      } else {
+        setTrackProgress(audioRef.current.currentTime);
+      }
+    }, [1000]);
+  };
+
+  const onScrub = (value) => {
+    // Clear any timers already running
+    clearInterval(intervalRef.current);
+    audioRef.current.currentTime = value;
+    setTrackProgress(audioRef.current.currentTime);
+  };
+
+  //onMouseUp,onKeyUp
+  const onScrubEnd = () => {
+    if (!isPlaying) {
+      setIsPlaying(true);
+    }
+    startTimer();
+  };
+
+  // track 바뀔 떄
+  useEffect(() => {
+    audioRef.current.pause();
+
+    audioRef.current = new Audio(music);
+    setTrackProgress(audioRef.current.currentTime);
+
+    if (isReady.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+      startTimer();
+    } else {
+      // Set the isReady ref as true for the next pass
+      isReady.current = true;
+    }
+  }, [trackIndex]);
+
+  // Handles cleanup and setup when changing tracks
+  useEffect(() => {
+    audioRef.current.pause();
+
+    audioRef.current = new Audio(music);
+    setTrackProgress(audioRef.current.currentTime);
+
+    if (isReady.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+      startTimer();
+    } else {
+      // Set the isReady ref as true for the next pass
+      isReady.current = true;
+    }
+  }, [trackIndex]);
+
+  //음악 재생 시간, 실시간 재생 위치
   useEffect(() => {
     audioRef.current.addEventListener("timeupdate", () => {
-      setDuration(audioRef.current.duration);
-      setCurrentTime(audioRef.current.currentTime);
-      settimeRange(
+      setDuration(onCalcMusicTime(audioRef.current.duration));
+      setCurrentTime(onCalcMusicTime(audioRef.current.currentTime));
+      setTimeRange(
         (audioRef.current.currentTime / audioRef.current.duration) * 1000
       );
     });
   }, [audioRef.current]);
+
+  // Pause and clean up on unmount
+  useEffect(() => {
+    return () => {
+      audioRef.current.pause();
+      clearInterval(intervalRef.current);
+    };
+  }, []);
 
   return (
     <Box>
@@ -173,9 +252,13 @@ function PlayScreen({ tracks }) {
           type="range"
           id="bar"
           name="bar"
+          step="1"
           min="0"
-          max="205"
-          value={timeRange}
+          max={barLength}
+          value={trackProgress}
+          onChange={(e) => onScrub(e.target.value)}
+          onMouseUp={onScrubEnd}
+          onKeyUp={onScrubEnd}
         />
       </MusicBar>
       <Time>
@@ -206,7 +289,9 @@ function PlayScreen({ tracks }) {
         </Btn>
       </PlayBar>
       <Another>
-        <FontAwesomeIcon icon={faMessage} />
+        <Btn>
+          <FontAwesomeIcon icon={faMessage} />
+        </Btn>
         <FontAwesomeIcon icon={faListUl} />
       </Another>
     </Box>
