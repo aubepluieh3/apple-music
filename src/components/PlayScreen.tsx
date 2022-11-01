@@ -13,11 +13,11 @@ import {
   faListUl,
   faVolumeOff,
   faVolumeHigh,
-  faVolumeXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faMessage } from "@fortawesome/free-regular-svg-icons";
 import React from "react";
 import { onCalcMusicTime } from "./CalTime";
+import Playlist from "./Playlist";
 
 const Box = styled.div`
   background: white;
@@ -149,6 +149,7 @@ const overlay = {
   visible: { backgroundColor: "rgba(0,0,0,0)" },
   exit: { backgroundColor: "rgba(0, 0, 0, 0)" },
 };
+
 const Lyrics = styled.div`
   font-size: 15px;
   padding: 25px;
@@ -403,7 +404,7 @@ function PlayScreen({ tracks }) {
             </Overlay>
           ) : null}
         </AnimatePresence>
-        <FontAwesomeIcon icon={faListUl} />
+        <Playlist tracks={tracks} />
       </Another>
     </Box>
   );
