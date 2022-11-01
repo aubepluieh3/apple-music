@@ -70,8 +70,8 @@ const BoxAnimation = styled(motion.div)`
   overflow-x: scroll;
 `;
 
-function Playlist({ tracks }) {
-  const [trackIndex, setTrackIndex] = useState(0);
+function Playlist({ tracks, trackIndex }) {
+  // const [trackIndex, setTrackIndex] = useState(0);
   const [id, setId] = useState<null | string>(null);
 
   return (
@@ -102,7 +102,7 @@ function Playlist({ tracks }) {
               <List>
                 {tracks
                   .filter(
-                    (track: { id: string }) => track.id !== String(trackIndex)
+                    (track: { id: string }) => parseInt(track.id)>trackIndex
                   )
                   .map((track) => (
                     <ListBox>
@@ -110,8 +110,8 @@ function Playlist({ tracks }) {
                         <AlbumImg src={track.img} />
                       </Album>
                       <AlbumDetail>
-                        <span>{title}</span>
-                        <span>{artist}</span>
+                        <span>{track.title}</span>
+                        <span>{track.artist}</span>
                       </AlbumDetail>
                     </ListBox>
                   ))}
