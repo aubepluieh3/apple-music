@@ -43,6 +43,8 @@ const ListBox = styled.div`
   jusify-content: center;
   align-items: center;
   width: 200px;
+  border-radius: 10px;
+  margin-bottom: 5px;
 `;
 const Album = styled.div`
   margin-right: 10px;
@@ -59,6 +61,12 @@ const AlbumDetail = styled.div`
   align-items: center;
   jusify-content: center;
   width: 150px;
+  span:first-child {
+    font-weight: 500;
+  }
+  span:last-child {
+    font-size: 10px;
+  }
 `;
 const BoxAnimation = styled(motion.div)`
   background-color: rgba(255, 255, 255, 1);
@@ -102,7 +110,7 @@ function Playlist({ tracks, trackIndex }) {
               <List>
                 {tracks
                   .filter(
-                    (track: { id: string }) => parseInt(track.id)>trackIndex
+                    (track: { id: string }) => parseInt(track.id) > trackIndex
                   )
                   .map((track) => (
                     <ListBox>

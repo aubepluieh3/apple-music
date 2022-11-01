@@ -71,7 +71,7 @@ const overlay = {
 const Title = styled(motion.span)`
   position: relative;
   top: -40px;
-  left: 10px;
+  left: 30px;
   color: white;
   font-weight: 700;
   font-size: 20px;
