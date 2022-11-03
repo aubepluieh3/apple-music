@@ -1,4 +1,5 @@
 import React from "react";
+import { RecoilRoot } from "recoil";
 import ReactDOM from "react-dom";
 import { createGlobalStyle } from "styled-components";
 
@@ -67,8 +68,10 @@ body {
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <RecoilRoot>
+      <GlobalStyle />
+      <App />
+    </RecoilRoot>
   </React.StrictMode>,
   document.getElementById("root")
 );

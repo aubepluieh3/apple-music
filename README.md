@@ -1,70 +1,39 @@
-# Getting Started with Create React App
+# Apple Music 🍎
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+22.10.25~
 
-## Available Scripts
+<img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=white"/></a>
+<img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=TypeScript&logoColor=white"/></a>
 
-In the project directory, you can run:
+## 🔍What Can I do ?  
 
-### `npm start`
+### 🏡Home
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+이미지를 클릭하면 인터뷰를 볼 수 있어요!
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+스크롤을 통해 에디터 Pick을 확인해보세요! 
 
-### `npm test`
+### 💖For U
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+최근에 들었던 앨범의 트랙을 확인할 수 있어요!
 
-### `npm run build`
+추천하는 앨범의 트랙들도 확인할 수 있어요! 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 🎧Music
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+원하는 시간대 부분의 노래를 들을 수 있어요!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+재생 버튼을 통해 음악을 재생할 수 있어요!
 
-### `npm run eject`
+이전 버튼과 다음 버튼을 통해 재생곡을 바꿔보세요!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+셔플을 클릭하면 무작위로 다른곡이 재생되어요!
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+원하는 대로 음량을 조절할 수 있어요!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+가사 버튼을 클릭하면 해당 곡의 가사를 확인할 수 있어요!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+List 버튼을 클릭하면 재생 목록을 확인할 수 있어요!
 
-## Learn More
+## 🖼ScreenShot
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
