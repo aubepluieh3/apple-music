@@ -37,3 +37,14 @@ List 버튼을 클릭하면 재생 목록을 확인할 수 있어요!
 
 ## 🖼ScreenShot
 
+<img src="https://github.com/aubepluieh3/apple-music/blob/a80a4c6b7b277b9c39bfb59f8163a385033a374c/Screenshot/Homepage.JPG"  width="500px" hegiht="300px"/>
+
+<img src="https://github.com/aubepluieh3/apple-music/blob/a80a4c6b7b277b9c39bfb59f8163a385033a374c/Screenshot/forupage.JPG"  width="500px" hegiht="300px"/>
+
+<img src="https://github.com/aubepluieh3/apple-music/blob/a80a4c6b7b277b9c39bfb59f8163a385033a374c/Screenshot/with.JPG"  width="500px" hegiht="300px"/>
+
+<img src="https://github.com/aubepluieh3/apple-music/blob/a80a4c6b7b277b9c39bfb59f8163a385033a374c/Screenshot/%EC%B5%9C%EA%B7%BC.JPG"  width="500px" hegiht="300px"/>
+
+<img src="https://github.com/aubepluieh3/apple-music/blob/a80a4c6b7b277b9c39bfb59f8163a385033a374c/Screenshot/%EA%B0%80%EC%82%AC.JPG" width="300px" height="500px"/><img src="https://github.com/aubepluieh3/apple-music/blob/a80a4c6b7b277b9c39bfb59f8163a385033a374c/Screenshot/playlist.JPG" width="300px" height="500px"/>
+
+
