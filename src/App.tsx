@@ -1,10 +1,8 @@
-import Main from "./Main";
 import Header from "./components/Header";
 import Home from "./Routes/Home";
 import ForU from "./Routes/ForU";
 
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import ForUPage from "./components/ForUPage";
 
 function App() {
   return (

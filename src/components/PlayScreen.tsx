@@ -10,12 +10,9 @@ import {
   faForward,
   faShuffle,
   faStop,
-  faListUl,
   faVolumeOff,
   faVolumeHigh,
 } from "@fortawesome/free-solid-svg-icons";
-import { faMessage } from "@fortawesome/free-regular-svg-icons";
-import React from "react";
 import { onCalcMusicTime } from "./CalTime";
 import Playlist from "./Playlist";
 import LyricsPart from "./LyricsPart";

@@ -5,7 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import styled from "styled-components";
 
-const Container = styled.div``;
+const Container = styled.div`
+  margin-left: 145px;
+`;
 const Btn = styled.button`
   background: none;
 
@@ -18,7 +20,7 @@ const Overlay = styled(motion.div)`
   align-items: center;
   position: relative;
   bottom: 590px;
-  right: 105px;
+  right: 250px;
 `;
 
 const overlay = {

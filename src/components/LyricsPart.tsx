@@ -8,7 +8,6 @@ const Container = styled.div``;
 
 const Btn = styled.button`
   background: none;
-
   border: none;
 `;
 
