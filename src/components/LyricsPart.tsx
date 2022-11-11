@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import styled from "styled-components";
+import { tracks } from "../Data/Music";
 
 const Container = styled.div``;
 
@@ -10,6 +11,8 @@ const Btn = styled.button`
   background: none;
   border: none;
 `;
+
+const Box = styled(motion.div)``;
 
 const BoxAnimation = styled(motion.div)`
   background-color: rgba(255, 255, 255, 1);
@@ -43,7 +46,7 @@ const Lyrics = styled.div`
   text-align: center;
 `;
 
-function LyricsPart({ tracks, trackIndex }) {
+function LyricsPart({ trackIndex }) {
   // const [trackIndex, setTrackIndex] = useState(0);
   const [id, setId] = useState<null | string>(null);
   const { lyrics } = tracks[trackIndex];
@@ -53,16 +56,15 @@ function LyricsPart({ tracks, trackIndex }) {
       {tracks
         .filter((track: { id: string }) => track.id === String(trackIndex))
         .map((track) => (
-          <div
+          <Box
             layoutId={track.id}
             key={track.id}
             onClick={() => setId(track.id)}
           >
-            {" "}
             <Btn>
               <FontAwesomeIcon icon={faMessage} />
             </Btn>
-          </div>
+          </Box>
         ))}
       <AnimatePresence>
         {id ? (

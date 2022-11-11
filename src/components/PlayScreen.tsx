@@ -16,6 +16,7 @@ import {
 import { onCalcMusicTime } from "./CalTime";
 import Playlist from "./Playlist";
 import LyricsPart from "./LyricsPart";
+import { tracks } from "../Data/Music";
 
 const Box = styled.div`
   background: white;
@@ -119,7 +120,7 @@ const Another = styled.div`
   }
 `;
 
-function PlayScreen({ tracks }) {
+function PlayScreen() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState("0:00");
   const [duration, setDuration] = useState("0:00");
@@ -331,8 +332,8 @@ function PlayScreen({ tracks }) {
       </SoundBar>
 
       <Another>
-        <LyricsPart tracks={tracks} trackIndex={trackIndex} />
-        <Playlist tracks={tracks} trackIndex={trackIndex} />
+        <LyricsPart trackIndex={trackIndex} />
+        <Playlist trackIndex={trackIndex} />
       </Another>
     </Box>
   );

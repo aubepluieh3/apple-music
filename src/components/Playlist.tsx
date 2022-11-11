@@ -70,6 +70,8 @@ const AlbumDetail = styled.div`
     font-size: 10px;
   }
 `;
+
+const Box = styled(motion.div)``;
 const BoxAnimation = styled(motion.div)`
   background-color: rgba(255, 255, 255, 1);
   border-radius: 40px;
@@ -80,7 +82,7 @@ const BoxAnimation = styled(motion.div)`
   overflow-x: scroll;
 `;
 
-function Playlist({ tracks, trackIndex }) {
+function Playlist({ trackIndex }) {
   // const [trackIndex, setTrackIndex] = useState(0);
   const [id, setId] = useState<null | string>(null);
 
@@ -89,7 +91,7 @@ function Playlist({ tracks, trackIndex }) {
       {tracks
         .filter((track: { id: string }) => track.id === String(trackIndex))
         .map((track) => (
-          <div
+          <Box
             layoutId={track.id}
             key={track.id}
             onClick={() => setId(track.id)}
@@ -97,7 +99,7 @@ function Playlist({ tracks, trackIndex }) {
             <Btn>
               <FontAwesomeIcon icon={faListUl} />
             </Btn>{" "}
-          </div>
+          </Box>
         ))}
       <AnimatePresence>
         {id ? (
