@@ -169,31 +169,31 @@ function HomePlaylist() {
       <Container ref={ref}>
         <Line>
           <MusicImg>
-            <AlbumImg src="img/today.jpg" />
+            <AlbumImg alt="Today's Hits" src="img/today.jpg" />
           </MusicImg>
           <span>Today's Hits</span>
         </Line>
         <Line>
           <MusicImg>
-            <AlbumImg src="img/kpop.jpg" />
+            <AlbumImg alt="K-POP" src="img/kpop.jpg" />
           </MusicImg>
           <span>K-POP</span>
         </Line>
         <Line>
           <MusicImg>
-            <AlbumImg src="img/strawberry moon.jpg" />
+            <AlbumImg alt="R&B" src="img/strawberry moon.jpg" />
           </MusicImg>
           <span>R&B</span>
         </Line>
         <Line>
           <MusicImg>
-            <AlbumImg src="img/cafe.jpg" />
+            <AlbumImg alt="Cafe Music" src="img/cafe.jpg" />
           </MusicImg>
           <span>Cafe Music</span>
         </Line>
         <Line>
           <MusicImg>
-            <AlbumImg src="img/acoustic.jpg" />
+            <AlbumImg alt="Acoustic" src="img/acoustic.jpg" />
           </MusicImg>
           <span>Acoustic</span>
         </Line>

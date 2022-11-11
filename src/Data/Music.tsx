@@ -1,3 +1,16 @@
+export interface Iprops {
+  id: string;
+  artist: string;
+  title: string;
+  music: string;
+  lyrics: string[];
+  img: string;
+}
+
+export interface Itracks {
+  tracks: Iprops[];
+}
+
 export const tracks = [
   {
     id: "0",
