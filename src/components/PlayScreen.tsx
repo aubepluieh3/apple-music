@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "styled-components";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import {
   faRepeat,
@@ -128,9 +128,8 @@ function PlayScreen() {
   const [trackIndex, setTrackIndex] = useState(0);
   const [barLength, setBarLength] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
-  const [id, setId] = useState<null | string>(null);
 
-  const { title, artist, music, lyrics, img } = tracks[trackIndex];
+  const { title, artist, music, img } = tracks[trackIndex];
 
   // Refs
   const audioRef = useRef(new Audio(music));
@@ -183,7 +182,7 @@ function PlayScreen() {
     }, [1000]);
   };
 
-  const onScrub = (value) => {
+  const onScrub = (value: any) => {
     // Clear any timers already running
     clearInterval(intervalRef.current);
     audioRef.current.currentTime = value;

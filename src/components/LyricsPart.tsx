@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import styled from "styled-components";
 import { tracks } from "../Data/Music";
+import { trackProps } from "./Playlist";
 
 const Container = styled.div``;
 
@@ -46,7 +47,7 @@ const Lyrics = styled.div`
   text-align: center;
 `;
 
-function LyricsPart({ trackIndex }) {
+function LyricsPart({ trackIndex }: trackProps) {
   // const [trackIndex, setTrackIndex] = useState(0);
   const [id, setId] = useState<null | string>(null);
   const { lyrics } = tracks[trackIndex];

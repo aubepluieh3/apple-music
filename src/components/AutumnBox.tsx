@@ -165,7 +165,7 @@ function AutumnBox() {
 
                       <AlbumDetail>
                         <Album>
-                          <img src={`img/${data.id}.jpg`} />
+                          <img src={`img/${data.id}.jpg`} alt="album" />
                           <span>{data.album}</span>
                           <span>{data.artist}</span>
                         </Album>

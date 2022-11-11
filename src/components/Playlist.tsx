@@ -82,7 +82,10 @@ const BoxAnimation = styled(motion.div)`
   overflow-x: scroll;
 `;
 
-function Playlist({ trackIndex }) {
+export interface trackProps {
+  trackIndex: number;
+}
+function Playlist({ trackIndex }: trackProps) {
   // const [trackIndex, setTrackIndex] = useState(0);
   const [id, setId] = useState<null | string>(null);
 
