@@ -134,6 +134,7 @@ function PlayScreen() {
   // Refs
   const audioRef = useRef(new Audio(music));
   const intervalRef = useRef();
+
   const isReady = useRef(false);
 
   //재생 버튼
@@ -170,16 +171,18 @@ function PlayScreen() {
     setBarLength(Math.floor(audioRef.current.duration));
   }, [[audioRef.current]]);
 
+  
   const startTimer = () => {
     // Clear
     clearInterval(intervalRef.current);
+
     intervalRef.current = setInterval(() => {
       if (audioRef.current.ended) {
         toNextTrack();
       } else {
         setTrackProgress(audioRef.current.currentTime);
       }
-    }, [1000]);
+    }, 1000);
   };
 
   const onScrub = (value: any) => {
