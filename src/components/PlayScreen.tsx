@@ -17,6 +17,7 @@ import { onCalcMusicTime } from "./CalTime";
 import Playlist from "./Playlist";
 import LyricsPart from "./LyricsPart";
 import { tracks } from "../Data/Music";
+import UseInterval from "./UseInterval";
 
 const Box = styled.div`
   background: white;
@@ -171,12 +172,11 @@ function PlayScreen() {
     setBarLength(Math.floor(audioRef.current.duration));
   }, [[audioRef.current]]);
 
-  
   const startTimer = () => {
     // Clear
     clearInterval(intervalRef.current);
 
-    intervalRef.current = setInterval(() => {
+    intervalRef.current = UseInterval(() => {
       if (audioRef.current.ended) {
         toNextTrack();
       } else {
