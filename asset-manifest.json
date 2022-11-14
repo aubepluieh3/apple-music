@@ -1,0 +1,10 @@
+{
+  "files": {
+    "main.js": "/apple-music/static/js/main.9310bc68.js",
+    "index.html": "/apple-music/index.html",
+    "main.9310bc68.js.map": "/apple-music/static/js/main.9310bc68.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.9310bc68.js"
+  ]
+}
