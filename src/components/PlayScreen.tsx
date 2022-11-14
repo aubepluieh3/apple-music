@@ -17,8 +17,7 @@ import { onCalcMusicTime } from "./CalTime";
 import Playlist from "./Playlist";
 import LyricsPart from "./LyricsPart";
 import { tracks } from "../Data/Music";
-import UseInterval from "./UseInterval";
-
+import useInterval from "./UseInterval";
 const Box = styled.div`
   background: white;
   border-radius: 30px;
@@ -83,7 +82,6 @@ const SoundBar = styled.div`
 
 const Btn = styled.button`
   background: none;
-
   border: none;
 `;
 const Time = styled.div`
@@ -175,15 +173,15 @@ function PlayScreen() {
   const startTimer = () => {
     // Clear
     clearInterval(intervalRef.current);
-
-    intervalRef.current = UseInterval(() => {
-      if (audioRef.current.ended) {
-        toNextTrack();
-      } else {
-        setTrackProgress(audioRef.current.currentTime);
-      }
-    }, 1000);
   };
+
+  useInterval(() => {
+    if (audioRef.current.ended) {
+      toNextTrack();
+    } else {
+      setTrackProgress(audioRef.current.currentTime);
+    }
+  }, 1000);
 
   const onScrub = (value: any) => {
     // Clear any timers already running

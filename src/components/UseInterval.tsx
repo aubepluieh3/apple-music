@@ -1,21 +1,24 @@
 import { useEffect, useRef } from "react";
 
-const useInterval = (callback: () => unknown, delay: number | null) => {
-  const savedCallback = useRef(callback);
+const useInterval = (callback: () => void, delay: number) => {
+  const savedCallback = useRef<() => void>();
 
+  // Remember the latest callback.
   useEffect(() => {
+    // ①
     savedCallback.current = callback;
   }, [callback]);
 
+  // Set up the interval.
   useEffect(() => {
-    if (delay == null) {
-      return;
+    function tick() {
+      // ②
+      savedCallback.current && savedCallback.current();
     }
-
-    const timeId = setInterval(() => savedCallback.current(), delay);
-
-    // eslint-disable-next-line consistent-return
-    return () => clearInterval(timeId);
+    if (delay !== null) {
+      const id = setInterval(tick, delay);
+      return () => clearInterval(id);
+    }
   }, [delay]);
 };
 
