@@ -56,7 +56,7 @@ export const tracks = [
       "날아오르는 기분 so cool",
       "삶이 어떻게 더 완벽해 ooh",
     ],
-    img: "img/strawberry moon.jpg",
+    img: "img/strawberry_moon.jpg",
   },
   {
     id: "1",
