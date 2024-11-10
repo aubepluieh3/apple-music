@@ -16,7 +16,7 @@ export const tracks = [
     id: "0",
     artist: "IU",
     title: "Strawberry Moon",
-    music: "Audio/strawberryMoon.mp3",
+    music: `${process.env.PUBLIC_URL}/Audio/strawberryMoon.mp3`,
     lyrics: [
       "달이 익어가니 서둘러 젊은 피야",
       "민들레 한 송이 들고",
@@ -62,7 +62,7 @@ export const tracks = [
     id: "1",
     artist: "IU",
     title: "LILAC",
-    music: "Audio/라일락.mp3",
+    music: `${process.env.PUBLIC_URL}/Audio/라일락.mp3`,
     lyrics: [
       "나리는 꽃가루에 눈이 따끔해 (아야)",
       "눈물이 고여도 꾹 참을래",
@@ -128,7 +128,7 @@ export const tracks = [
     id: "2",
     artist: "NCT DREAM",
     title: "Hello Future",
-    music: "Audio/Hello Future.mp3",
+    music: `${process.env.PUBLIC_URL}/Audio/Hello Future.mp3`,
     lyrics: [
       "Big dreams and big thrills",
       "Flying high 터무니없는 상상해봐",
@@ -213,7 +213,7 @@ export const tracks = [
     id: "3",
     artist: "Crush",
     title: "잊어버리지마",
-    music: "Audio/잊어버리지마.mp3",
+    music: `${process.env.PUBLIC_URL}/Audio/잊어버리지마.mp3`,
     lyrics: [
       "너와 나 언젠가 남이 되어도",
       "영영 닿을 수 없는 사이 되어도",
