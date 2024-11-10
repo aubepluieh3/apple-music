@@ -134,7 +134,7 @@ function HomePlaylist() {
               layoutId={item.id}
               key={item.id}
             >
-              <img src={`img/${item.id}.jpg`} />
+              <img src={`${process.env.PUBLIC_URL}/img/${item.id}.jpg`} />
               <Title>{item.title}</Title>
             </BoxTwo>
           ))}
@@ -169,31 +169,31 @@ function HomePlaylist() {
       <Container ref={ref}>
         <Line>
           <MusicImg>
-            <AlbumImg alt="Today's Hits" src="img/today.jpg" />
+            <AlbumImg alt="Today's Hits" src={`${process.env.PUBLIC_URL}/img/today.jpg`}/>
           </MusicImg>
           <span>Today's Hits</span>
         </Line>
         <Line>
           <MusicImg>
-            <AlbumImg alt="K-POP" src="img/kpop.jpg" />
+            <AlbumImg alt="K-POP" src={`${process.env.PUBLIC_URL}/img/kpop.jpg`}/>
           </MusicImg>
           <span>K-POP</span>
         </Line>
         <Line>
           <MusicImg>
-            <AlbumImg alt="R&B" src="img/strawberry moon.jpg" />
+            <AlbumImg alt="R&B" src={`${process.env.PUBLIC_URL}/img/strawberry_moon.jpg`}/>
           </MusicImg>
           <span>R&B</span>
         </Line>
         <Line>
           <MusicImg>
-            <AlbumImg alt="Cafe Music" src="img/cafe.jpg" />
+            <AlbumImg alt="Cafe Music" src={`${process.env.PUBLIC_URL}/img/cafe.jpg`}/>
           </MusicImg>
           <span>Cafe Music</span>
         </Line>
         <Line>
           <MusicImg>
-            <AlbumImg alt="Acoustic" src="img/acoustic.jpg" />
+            <AlbumImg alt="Acoustic" src={`${process.env.PUBLIC_URL}/img/acoustic.jpg`} />
           </MusicImg>
           <span>Acoustic</span>
         </Line>

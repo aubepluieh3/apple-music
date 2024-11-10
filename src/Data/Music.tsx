@@ -56,7 +56,7 @@ export const tracks = [
       "날아오르는 기분 so cool",
       "삶이 어떻게 더 완벽해 ooh",
     ],
-    img: "img/strawberry_moon.jpg",
+    img: `${process.env.PUBLIC_URL}/img/strawberry_moon.jpg`
   },
   {
     id: "1",
@@ -122,7 +122,7 @@ export const tracks = [
       "Love resembles misty dream",
       "뜬구름처럼",
     ],
-    img: "img/라일락.jpg",
+    img: `${process.env.PUBLIC_URL}/img/라일락.jpg`
   },
   {
     id: "2",
@@ -207,7 +207,7 @@ export const tracks = [
       "(Hello future) (whoa whoa whoa)",
       "Hello future",
     ],
-    img: "img/hello.jpg",
+    img: `${process.env.PUBLIC_URL}/img/hello.jpg`
   },
   {
     id: "3",
@@ -249,6 +249,6 @@ export const tracks = [
       "잊어버리지마 날 잊어버리지마",
       "이 노랠 잊어버리지마",
     ],
-    img: "img/잊어버리지마.jpg",
+    img: `${process.env.PUBLIC_URL}/img/잊어버리지마.jpg`
   },
 ];
