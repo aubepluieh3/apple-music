@@ -190,14 +190,6 @@ function PlayScreen() {
     setTrackProgress(audioRef.current.currentTime);
   };
 
-  //onMouseUp,onKeyUp
-  const onScrubEnd = () => {
-    if (!isPlaying) {
-      setIsPlaying(true);
-    }
-    startTimer();
-  };
-
   // track 바뀔 떄
   useEffect(() => {
     audioRef.current.pause();
@@ -267,8 +259,6 @@ function PlayScreen() {
           max={barLength}
           value={trackProgress}
           onChange={(e) => onScrub(e.target.value)}
-          onMouseUp={onScrubEnd}
-          onKeyUp={onScrubEnd}
         />
       </MusicBar>
       <Time>
