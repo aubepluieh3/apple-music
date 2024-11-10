@@ -5,6 +5,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import { tracks } from "../Data/Music";
 import { trackProps } from "./Playlist";
+import React from "react";
 
 const Container = styled.div``;
 
@@ -77,12 +78,12 @@ function LyricsPart({ trackIndex }: trackProps) {
             exit="exit"
           >
             <BoxAnimation layoutId={id}>
-              <Lyrics>
-                {lyrics.map((lyric) => (
-                  <>
+            <Lyrics>
+                {lyrics.map((lyric, index) => (
+                  <React.Fragment key={index}>
                     <span>{lyric}</span>
                     <br />
-                  </>
+                  </React.Fragment>
                 ))}
               </Lyrics>
             </BoxAnimation>

@@ -86,7 +86,6 @@ export interface trackProps {
   trackIndex: number;
 }
 function Playlist({ trackIndex }: trackProps) {
-  // const [trackIndex, setTrackIndex] = useState(0);
   const [id, setId] = useState<null | string>(null);
 
   return (
@@ -101,7 +100,7 @@ function Playlist({ trackIndex }: trackProps) {
           >
             <Btn>
               <FontAwesomeIcon icon={faListUl} />
-            </Btn>{" "}
+            </Btn>
           </Box>
         ))}
       <AnimatePresence>
@@ -120,7 +119,7 @@ function Playlist({ trackIndex }: trackProps) {
                     (track: { id: string }) => parseInt(track.id) > trackIndex
                   )
                   .map((track) => (
-                    <ListBox>
+                    <ListBox key={track.id}>
                       <Album>
                         <AlbumImg src={track.img} />
                       </Album>
