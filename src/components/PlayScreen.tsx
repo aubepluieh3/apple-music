@@ -215,23 +215,6 @@ function PlayScreen() {
     }
   }, [trackIndex]);
 
-  // Handles cleanup and setup when changing tracks
-  useEffect(() => {
-    audioRef.current.pause();
-
-    audioRef.current = new Audio(music);
-    setTrackProgress(audioRef.current.currentTime);
-
-    if (isReady.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
-      startTimer();
-    } else {
-      // Set the isReady ref as true for the next pass
-      isReady.current = true;
-    }
-  }, [trackIndex]);
-
   //음악 재생 시간, 실시간 재생 위치
   useEffect(() => {
     audioRef.current.addEventListener("timeupdate", () => {
