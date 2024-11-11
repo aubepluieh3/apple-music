@@ -136,13 +136,23 @@ function PlayScreen() {
 
   const isReady = useRef(false);
 
+  // 음악을 정지 상태로 시작
+  useEffect(() => {
+    audioRef.current.pause(); // 오디오 정지
+    audioRef.current.currentTime = 0; // 오디오 시작 위치를 0으로 설정
+  }, []);
+
+
   //재생 버튼
   const onPlayButtonClick = () => {
     if (isPlaying) {
       audioRef.current.pause();
       setIsPlaying(false);
     } else {
-      audioRef.current.play();
+      // 사용자의 클릭 이벤트가 있을 때만 play() 호출
+      audioRef.current.play().catch((error) => {
+        console.error("음악 재생 오류:", error);  // 자동 재생 오류 처리
+      });
       setIsPlaying(true);
     }
   };
@@ -190,22 +200,27 @@ function PlayScreen() {
     setTrackProgress(audioRef.current.currentTime);
   };
 
-  // track 바뀔 떄
+  // 트랙 변경 시 음악을 초기화
   useEffect(() => {
+    // 새 트랙을 로드할 때마다 오디오를 초기화
     audioRef.current.pause();
-
+    audioRef.current.currentTime = 0;  // 음악 시작 위치를 0으로 설정
     audioRef.current = new Audio(music);
-    setTrackProgress(audioRef.current.currentTime);
 
+    // isReady 상태에 따라 play를 할지 말지를 결정
     if (isReady.current) {
-      audioRef.current.play();
-      setIsPlaying(true);
-      startTimer();
+      // 사용자 상호작용을 보장한 후 play 호출
+      audioRef.current.play().then(() => {
+        setIsPlaying(true); // 음악이 실제로 재생되었을 때만 상태를 true로 설정
+      }).catch((error) => {
+        console.error("음악 재생 오류:", error);
+      });
     } else {
-      // Set the isReady ref as true for the next pass
+      // 처음 로드할 때만 isReady를 true로 설정하여, 다음에 음악을 재생할 수 있도록 함
       isReady.current = true;
     }
-  }, [trackIndex]);
+  }, [trackIndex]);  // 트랙이 변경될 때마다 실행
+  
 
   //음악 재생 시간, 실시간 재생 위치
   useEffect(() => {
