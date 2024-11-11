@@ -35,6 +35,16 @@
 
 List 버튼을 클릭하면 재생 목록을 확인할 수 있어요!
 
+### 🔨 Update
+
+페이지 이동 시 이미지 로딩 오류 현상 수정
+
+재생바 이동해도 기존 음악 재생 상태 유지도록 수정
+
+(24.11.10)
+
+맨 처음 페이지 접근 시 재생 버튼을 클릭해야 노래 재생되도록 수정 (24.11.11)
+
 ## 🖼ScreenShot
 
 <img src="https://github.com/aubepluieh3/apple-music/blob/a80a4c6b7b277b9c39bfb59f8163a385033a374c/Screenshot/Homepage.JPG"  width="500px" hegiht="300px"/>
